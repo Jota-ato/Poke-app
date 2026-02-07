@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+@theme {
+    /* Pokemon Type Colors */
+    --color-pokemon-fighting: #ce4069;
+    --color-pokemon-psychic: #f97176;
+    --color-pokemon-poison: #ab6ac8;
+    --color-pokemon-dragon: #0a6dc4;
+    --color-pokemon-ghost: #5269ac;
+    --color-pokemon-dark: #5a5366;
+    --color-pokemon-ground: #d97746;
+    --color-pokemon-fire: #ff9c54;
+    --color-pokemon-fairy: #ec8fe6;
+    --color-pokemon-water: #4d90d5;
+    --color-pokemon-flying: #8fa8dd;
+    --color-pokemon-normal: #9099a1;
+    --color-pokemon-rock: #c7b78b;
+    --color-pokemon-electric: #f3d23b;
+    --color-pokemon-bug: #90c12c;
+    --color-pokemon-grass: #63bb5b;
+    --color-pokemon-ice: #74cec0;
+    --color-pokemon-steel: #5a8ea1;
+}

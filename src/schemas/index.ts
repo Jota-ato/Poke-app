@@ -40,11 +40,44 @@ const typeSchema = z.object({
     })
 })
 
+const statSchema = z.object({
+    base_stat: z.number(),
+    effort: z.number(),
+    stat: z.object({
+        name: z.string(),
+        url: z.string()
+    })
+})
+
+const criesSchema = z.object({
+    latest: z.string().nullable(),
+    legacy: z.string().nullable()
+}).nullable()
+
+const formSchema = z.object({
+    name: z.string(),
+    url: z.string()
+})
+
+const speciesSchema = z.object({
+    name: z.string(),
+    url: z.string()
+}).nullable()
+
 export const detailPokemonSchema = z.object({
+    height: z.number(),
     abilities: z.array(abilitySchema),
     sprites: spritesSchema,
-    types: z.array(typeSchema)
+    types: z.array(typeSchema),
+    id: z.number(),
+    name: z.string(),
+    weight: z.number(),
+    base_experience: z.number().nullable(),
+    stats: z.array(statSchema),
+    cries: criesSchema,
+    forms: z.array(formSchema),
+    species: speciesSchema,
 })
 
 export type PokemonDraft = z.infer<typeof detailPokemonSchema>
-export type PokemonType = PokemonDraft & {name: string}
+export type PokemonType = PokemonDraft & { name: string }
