@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import pokemonTypes from "@/src/pokemonTypes/types"
 
-type PokemonCardProps = {
+interface PokemonCardProps {
     pokemon: PokemonType
 }
 

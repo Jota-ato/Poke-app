@@ -2,10 +2,11 @@
 
 import { pokemonResponseSchema, detailPokemonSchema } from "@/src/schemas";
 import { notFound } from 'next/navigation';
+import type { PokemonType } from "@/src/schemas";
 
-const base_url = 'https://pokeapi.co/api/v2/';
+const base_url = 'https://pokeapi.co/api/v2';
 
-export async function fetchPokemons() {
+export async function fetchPokemons(): Promise<PokemonType[]> {
     const url = new URL(`${base_url}/pokemon`);
     url.searchParams.append('limit', '20');
     try {
@@ -27,8 +28,7 @@ export async function fetchCardDetailPokemons(pokemons: { name: string, url: str
     try {
         const pokemonList = Promise.all(
             pokemons.map(async pokemon => {
-                const { sprites, types, name } = await fetchDetailPokemon(pokemon.name);
-                return { sprites, types, name }
+                return await fetchDetailPokemon(pokemon.name)
             })
         )
         return pokemonList;
@@ -37,11 +37,12 @@ export async function fetchCardDetailPokemons(pokemons: { name: string, url: str
     }
 }
 
-export async function fetchDetailPokemon(name: string) {
+export async function fetchDetailPokemon(name: string): Promise<PokemonType> {
     const url = `${base_url}/pokemon/${name}`
     const res = await fetch(url);
 
     if (!res.ok) {
+        console.log(res)
         if (res.status === 404) notFound();
         throw new Error(`Failed to fetch Pokemon: ${res.status} ${res.statusText}`);
     }

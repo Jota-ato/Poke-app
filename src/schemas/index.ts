@@ -79,5 +79,5 @@ export const detailPokemonSchema = z.object({
     species: speciesSchema,
 })
 
-export type PokemonDraft = z.infer<typeof detailPokemonSchema>
-export type PokemonType = PokemonDraft & { name: string }
+export type PokemonType = z.infer<typeof detailPokemonSchema>
+
