@@ -8,7 +8,7 @@ const base_url = 'https://pokeapi.co/api/v2';
 
 export async function fetchPokemons(): Promise<PokemonType[]> {
     const url = new URL(`${base_url}/pokemon`);
-    url.searchParams.append('limit', '20');
+    url.searchParams.append('limit', '21');
     try {
         const response = await fetch(url);
         const data = await response.json();

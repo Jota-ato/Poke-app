@@ -15,16 +15,16 @@ export default function PokemonHero({ pokemon }: PokemonHeroProps) {
     return (
         <header className={`relative overflow-hidden ${typeColor}`}>
             {/* Decorative circles */}
-            <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/10 pointer-events-none" />
-            <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-white/10 pointer-events-none" />
+            <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-black/10 pointer-events-none" />
+            <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-black/10 pointer-events-none" />
 
             <div className="relative max-w-4xl mx-auto px-6 pt-10 pb-0 flex flex-col sm:flex-row items-end justify-between gap-4">
                 {/* Name + types */}
                 <div className="pb-8 z-10">
-                    <p className="text-white/60 text-sm font-mono tracking-widest mb-1">
+                    <p className="text-white/70 text-sm font-mono tracking-widest mb-1">
                         #{String(pokemon.id).padStart(3, "0")}
                     </p>
-                    <h1 className="text-4xl sm:text-5xl font-black capitalize tracking-tight drop-shadow-lg">
+                    <h1 className="text-4xl sm:text-5xl font-black capitalize tracking-tight text-white drop-shadow">
                         {pokemon.name}
                     </h1>
                     <div className="flex flex-wrap gap-2 mt-3">

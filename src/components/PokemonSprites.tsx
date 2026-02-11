@@ -23,8 +23,8 @@ export default function PokemonSprites({ name, sprites }: PokemonSpritesProps) {
     ];
 
     return (
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col gap-4 sm:col-span-2">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-white/40">Sprites</h2>
+        <div className="bg-white border border-gray-200 rounded-2xl p-5 flex flex-col gap-4 shadow-sm sm:col-span-2">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400">Sprites</h2>
             <div className="flex flex-wrap gap-6 items-center justify-center sm:justify-start">
                 {entries.map((entry) => (
                     <div key={entry.label} className="flex flex-col items-center gap-1">
@@ -35,7 +35,7 @@ export default function PokemonSprites({ name, sprites }: PokemonSpritesProps) {
                             height={80}
                             className="object-contain"
                         />
-                        <span className="text-xs text-white/40">{entry.label}</span>
+                        <span className="text-xs text-gray-400">{entry.label}</span>
                     </div>
                 ))}
             </div>

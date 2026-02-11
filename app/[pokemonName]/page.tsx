@@ -14,7 +14,7 @@ export default async function DetailPokemon({ params }: DetailPokemonProps) {
     const pokemon = await fetchDetailPokemon(pokemonName);
 
     return (
-        <div className="min-h-screen font-sans">
+        <div className="min-h-screen bg-gray-50 font-sans">
             <PokemonHero pokemon={pokemon} />
 
             <main className="max-w-4xl mx-auto px-6 py-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -23,10 +23,8 @@ export default async function DetailPokemon({ params }: DetailPokemonProps) {
                 <PokemonStats stats={pokemon.stats} />
                 <PokemonSprites name={pokemon.name} sprites={pokemon.sprites} />
             </main>
-            
-            <footer className="min-h-20">
-                
-            </footer>
+
+            <footer className="min-h-20" />
         </div>
     );
 }
