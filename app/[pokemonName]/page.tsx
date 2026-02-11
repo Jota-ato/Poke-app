@@ -1,26 +1,32 @@
-import { fetchDetailPokemon } from '../lib/actions';
-import pokemonTypes from "@/src/pokemonTypes/types"
+import { fetchDetailPokemon } from "../lib/actions";
+import PokemonHero from "@/src/components/PokemonHero";
+import PokemonAbout from "@/src/components/PokemonAbout";
+import PokemonAbilities from "@/src/components/PokemonAbilities";
+import PokemonStats from "@/src/components/PokemonStats";
+import PokemonSprites from "@/src/components/PokemonSprites";
 
 interface DetailPokemonProps {
-    params: Promise<{pokemonName: string}>
+    params: Promise<{ pokemonName: string }>;
 }
 
-export default async function DetailPokemon({ params } : DetailPokemonProps) {
+export default async function DetailPokemon({ params }: DetailPokemonProps) {
     const { pokemonName } = await params;
     const pokemon = await fetchDetailPokemon(pokemonName);
 
     return (
-        <>
-            <header className={`w-[80%] max-w-440 mx-auto ${pokemonTypes[pokemon.types[0].type.name].color} mt-12 p-4 rounded-xl shadow-xl`}>
-                <h2 className='text-white font-bold capitalize text-2xl pb-4 border-b border-white'>{pokemonName}</h2>
-                <div className='mt-4 flex'>
-                    {pokemon.types.map(type => (
-                        <p className='mr-4 last-of-type:mr-0 capitalize text-white' key={type.type.url}>
-                            {type.type.name}
-                        </p>
-                    ))}
-                </div>
-            </header>
-        </>
+        <div className="min-h-screen font-sans">
+            <PokemonHero pokemon={pokemon} />
+
+            <main className="max-w-4xl mx-auto px-6 py-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <PokemonAbout pokemon={pokemon} />
+                <PokemonAbilities abilities={pokemon.abilities} />
+                <PokemonStats stats={pokemon.stats} />
+                <PokemonSprites name={pokemon.name} sprites={pokemon.sprites} />
+            </main>
+            
+            <footer className="min-h-20">
+                
+            </footer>
+        </div>
     );
 }

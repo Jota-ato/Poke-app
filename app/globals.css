@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  color-scheme: light only;
+}
+
 @theme {
     /* Pokemon Type Colors */
     --color-pokemon-fighting: #ce4069;
