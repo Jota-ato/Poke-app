@@ -6,9 +6,10 @@ import type { PokemonType } from "@/src/schemas";
 
 const base_url = 'https://pokeapi.co/api/v2';
 
-export async function fetchPokemons(): Promise<PokemonType[]> {
+export async function fetchPokemons(offset: number = 0) {
     const url = new URL(`${base_url}/pokemon`);
     url.searchParams.append('limit', '21');
+    url.searchParams.append('offset', String(offset));
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -18,7 +19,12 @@ export async function fetchPokemons(): Promise<PokemonType[]> {
             throw new Error(`Validation failed: ${JSON.stringify(result.error)}`);
         }
         const detailInfo = await fetchCardDetailPokemons(result.data.results);
-        return detailInfo;
+        return {
+            pokemons: detailInfo,
+            hasNext: !!result.data.next,
+            hasPrev: !!result.data.previous,
+            total: result.data.count,
+        };
     } catch (err) {
         throw new Error(`${err}`)
     }
